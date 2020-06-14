@@ -27,4 +27,6 @@ public class Fornecedor extends Pessoa {
     private List<CartaoCredito> cartoesCredito;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fornecedor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> enderecos;
+
+
 }
