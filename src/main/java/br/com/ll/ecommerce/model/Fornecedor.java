@@ -1,12 +1,12 @@
 package br.com.ll.ecommerce.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @Entity
@@ -15,18 +15,14 @@ public class Fornecedor extends Pessoa {
 
     private static final long serialVersionUID = 1L;
 
+    @NotBlank(message = "O CPF não pode estar em branco.")
     private String cpf;
+    @NotBlank(message = "O gênero não pode estar em branco.")
     private String genero;
+    @NotNull(message = "A data de nascimento não pode estar em branco.")
     private LocalDate dataNascimento;
+    @NotNull(message = "O telefone não pode estar em branco.")
     private Integer telefone;
-    private boolean ativo;
-    @ManyToOne
-    private Produto produtoPadrao;
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fornecedor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CartaoCredito> cartoesCredito;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fornecedor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Endereco> enderecos;
-
+    private boolean ativo = true;
 
 }

@@ -44,7 +44,7 @@ public class EnderecoController {
             service.apagar(id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
-            log.error("Falha ao apagar morador.", e);
+            log.error("Falha ao apagar endereço.", e);
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

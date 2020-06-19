@@ -1,10 +1,13 @@
 package br.com.ll.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Data
 @Entity
@@ -15,8 +18,10 @@ public class Produto extends EntidadeDominio {
 
     private String descricao;
     private String categoria;
+    @Transient
+    private Integer idFornecedor;
     @ManyToOne
+    @JsonIgnore
     private Fornecedor fornecedor;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Endereco> enderecos;
+    private Boolean padraoFornecedor = false;
 }

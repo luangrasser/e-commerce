@@ -15,9 +15,6 @@ public class Endereco extends EntidadeDominio {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue
-    private Integer id;
     private String tipoDomicilio;
     @NotNull @NotEmpty
     private String logradouro;

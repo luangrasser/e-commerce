@@ -62,8 +62,7 @@ public class EnderecoService {
     }
 
     public void apagar(Integer id) throws Exception {
-        Endereco endereco = repository.findById(id)
-                .orElseThrow(() -> new Exception("Endereco desconhecido."));
+        Endereco endereco = repository.findById(id).orElseThrow(() -> new Exception("Endereco desconhecido."));
         repository.delete(endereco);
     }
 }
