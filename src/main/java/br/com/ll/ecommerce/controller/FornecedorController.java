@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/fornecedor")
 public class FornecedorController {
 
+    @RequestMapping(method = RequestMethod.GET, value = "/formulario")
+    public  String inicio(){
+        return "views/formulario";
+    }
     @Autowired
     private FornecedorService service;
+
 
     @PostMapping("/salvar")
     public ResponseEntity<?> salvar(@RequestBody Fornecedor fornecedor) {
@@ -42,8 +47,8 @@ public class FornecedorController {
             service.atualizarStatus(id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
-            log.error("Falha ao apagar morador.", e);
-            return ResponseEntity.badRequest().body("Falha ao apagar morador.");
+            log.error("Falha ao apagar fornecedor.", e);
+            return ResponseEntity.badRequest().body("Falha ao apagar fornecedor.");
         }
     }
 
